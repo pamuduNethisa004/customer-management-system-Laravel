@@ -19,16 +19,29 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+    return view('customers.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    use App\Models\Customer;
+
+public function store(Request $request)
+{
+    $validated = $request->validate([
+        'full_name' => 'required|max:255',
+        'email' => 'required|email|unique:customers,email',
+        'phone' => 'required|max:20',
+        'address' => 'required',
+    ]);
+
+    Customer::create($validated);
+
+    return redirect()
+        ->route('customers.index')
+        ->with('success', 'Customer added successfully.');
+}
 
     /**
      * Display the specified resource.
