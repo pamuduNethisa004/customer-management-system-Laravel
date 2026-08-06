@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -21,11 +22,6 @@ class CustomerController extends Controller
     {
     return view('customers.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    use App\Models\Customer;
 
 public function store(Request $request)
 {
