@@ -28,10 +28,11 @@ class CustomerController extends Controller
 public function store(Request $request)
 {
     $validated = $request->validate([
-        'full_name' => 'required|max:255',
-        'email' => 'required|email|unique:customers,email',
-        'phone' => 'required|max:20',
-        'address' => 'required',
+    'full_name' => 'required|max:255',
+    'email' => 'required|email|unique:customers,email',
+    'phone' => 'required|max:20',
+    'address' => 'required',
+    'status' => 'required|in:Active,Inactive',
     ]);
 
     Customer::create($validated);
@@ -62,11 +63,12 @@ public function store(Request $request)
      */
     public function update(Request $request, Customer $customer)
     {
-    $validated = $request->validate([
-        'full_name' => 'required|max:255',
-        'email' => 'required|email|unique:customers,email,' . $customer->id,
-        'phone' => 'required|max:20',
-        'address' => 'required',
+   $validated = $request->validate([
+    'full_name' => 'required|max:255',
+    'email' => 'required|email|unique:customers,email,' . $customer->id,
+    'phone' => 'required|max:20',
+    'address' => 'required',
+    'status' => 'required|in:Active,Inactive',
     ]);
 
     $customer->update($validated);

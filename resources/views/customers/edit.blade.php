@@ -45,6 +45,19 @@
             rows="4"
             class="form-control">{{ old('address', $customer->address) }}</textarea>
     </div>
+    
+    <div class="mb-3">
+    <label class="form-label">Status</label>
+    <select name="status" class="form-control">
+        <option value="Active" {{ $customer->status == 'Active' ? 'selected' : '' }}>
+            Active
+        </option>
+
+        <option value="Inactive" {{ $customer->status == 'Inactive' ? 'selected' : '' }}>
+            Inactive
+        </option>
+    </select>
+    </div>
 
     <button class="btn btn-primary">
         Update Customer

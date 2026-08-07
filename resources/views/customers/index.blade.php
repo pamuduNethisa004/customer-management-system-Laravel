@@ -26,6 +26,7 @@
             <th>Email</th>
             <th>Phone</th>
             <th>Address</th>
+            <th>Status</th>
             <th width="180">Actions</th>
         </tr>
     </thead>
@@ -40,6 +41,13 @@
             <td>{{ $customer->email }}</td>
             <td>{{ $customer->phone }}</td>
             <td>{{ $customer->address }}</td>
+            <td>
+                @if($customer->status == 'Active')
+                    <span class="badge bg-success">Active</span>
+                @else
+                    <span class="badge bg-secondary">Inactive</span>
+                @endif
+            </td>
 
             <td>
 
