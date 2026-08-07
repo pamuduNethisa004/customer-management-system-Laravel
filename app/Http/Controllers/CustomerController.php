@@ -52,24 +52,39 @@ public function store(Request $request)
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Customer $customer)
     {
-        //
+    return view('customers.edit', compact('customer'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Customer $customer)
     {
-        //
+    $validated = $request->validate([
+        'full_name' => 'required|max:255',
+        'email' => 'required|email|unique:customers,email,' . $customer->id,
+        'phone' => 'required|max:20',
+        'address' => 'required',
+    ]);
+
+    $customer->update($validated);
+
+    return redirect()
+        ->route('customers.index')
+        ->with('success', 'Customer updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+   public function destroy(Customer $customer)
     {
-        //
+    $customer->delete();
+
+    return redirect()
+        ->route('customers.index')
+        ->with('success', 'Customer deleted successfully.');
     }
 }
