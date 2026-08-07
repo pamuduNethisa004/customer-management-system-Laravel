@@ -3,6 +3,8 @@
 @section('content')
 
 @if(session('success'))
+
+@section('title', 'Customers')
 <div class="alert alert-success">
     {{ session('success') }}
 </div>

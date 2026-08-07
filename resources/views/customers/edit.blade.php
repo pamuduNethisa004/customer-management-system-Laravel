@@ -2,6 +2,8 @@
 
 @section('content')
 
+@section('title', 'Edit Customer')
+
 <h2 class="mb-4">Edit Customer</h2>
 
 <form action="{{ route('customers.update', $customer->id) }}" method="POST">

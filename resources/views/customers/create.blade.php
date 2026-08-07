@@ -2,6 +2,8 @@
 
 @section('content')
 
+@section('title', 'Add Customer')
+
 <h2 class="mb-4">Add Customer</h2>
 
 <form action="{{ route('customers.store') }}" method="POST">
