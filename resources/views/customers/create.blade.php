@@ -8,43 +8,70 @@
     @csrf
 
     <div class="mb-3">
-        <label class="form-label">Full Name</label>
-        <input
-            type="text"
-            name="full_name"
-            class="form-control"
-            value="{{ old('full_name') }}"
-        >
-    </div>
+    <label class="form-label">Full Name</label>
+
+    <input
+        type="text"
+        name="full_name"
+        class="form-control @error('full_name') is-invalid @enderror"
+        value="{{ old('full_name') }}"
+    >
+
+    @error('full_name')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+    @enderror
+</div>
 
     <div class="mb-3">
-        <label class="form-label">Email</label>
-        <input
-            type="email"
-            name="email"
-            class="form-control"
-            value="{{ old('email') }}"
-        >
-    </div>
+    <label class="form-label">Email</label>
 
-    <div class="mb-3">
-        <label class="form-label">Phone</label>
-        <input
-            type="text"
-            name="phone"
-            class="form-control"
-            value="{{ old('phone') }}"
-        >
-    </div>
+    <input
+        type="email"
+        name="email"
+        class="form-control @error('email') is-invalid @enderror"
+        value="{{ old('email') }}"
+    >
 
-    <div class="mb-3">
-        <label class="form-label">Address</label>
-        <textarea
-            name="address"
-            class="form-control"
-            rows="4"
-        >{{ old('address') }}</textarea>
-    </div>
+    @error('email')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+    @enderror
+</div>
+
+   <div class="mb-3">
+    <label class="form-label">Phone</label>
+
+    <input
+        type="text"
+        name="phone"
+        class="form-control @error('phone') is-invalid @enderror"
+        value="{{ old('phone') }}"
+    >
+
+    @error('phone')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+    @enderror
+</div>
+
+   <div class="mb-3">
+    <label class="form-label">Address</label>
+
+    <textarea
+        name="address"
+        class="form-control @error('address') is-invalid @enderror"
+        rows="4">{{ old('address') }}</textarea>
+
+    @error('address')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+    @enderror
+</div>
 
     <button type="submit" class="btn btn-success">
         Save Customer
